@@ -10,9 +10,41 @@
     <%= stylesheet_link_tag :application, media: "all" %>
 
     <%= javascript_include_tag "application" %>
+    <% if current_hacker && !current_hacker.busy? %>
+      <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
+      <script type="text/javascript">
+        // Enable pusher logging - don't include this in production
+        Pusher.log = function(message) {
+          if (window.console && window.console.log) {
+            window.console.log(message);
+          }
+        };
+
+        var pusher = new Pusher('b218d16c34fc85f4cebf', {
+          encrypted: true
+        });
+        var channels = [];
+        <% current_hacker.languages.each do |language| %>
+          channels.push(pusher.subscribe("<%= language.name %>"));
+        <% end %>
+        $.each(channels, function(index, channel){
+          channel.bind('student_request', function(data) {
+            $.notify({
+              // options
+              message: data.message,
+              url: "/take/" + data.mentorship_id
+            },{
+              // settings
+              type: 'info'
+            });
+            console.log(data.message);
+            console.log(data.mentorship_id);
+          });
+        });
+      </script>
+    <% end %>
   </head>
   <body>
-
     <div class="navbar navbar-inverse navbar-static-top">
       <div class="container">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">

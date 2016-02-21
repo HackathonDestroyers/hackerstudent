@@ -3,9 +3,11 @@ ruby '2.3.0'
 
 gem 'thin'
 gem 'devise'
+gem 'pusher'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-chosen'
+  gem 'rails-assets-remarkable-bootstrap-notify'
 end
 
 gem 'rails_12factor', group: :production

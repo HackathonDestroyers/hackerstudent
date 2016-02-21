@@ -5,6 +5,10 @@ class Mentorship < ActiveRecord::Base
 
   before_create :generate_connection_code
 
+  def full?
+    !hacker_id.nil?
+  end
+
   private
 
   def generate_connection_code
