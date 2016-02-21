@@ -2,7 +2,7 @@
   <div class="container">
     <div class="profile">
     <h2>Welcome back, <%= current_student.first_name.titleize %></h2>
-  
+
     <%= form_for(@mentorship) do |f| %>
       <%= f.hidden_field :student_id %>
       <div class="field">
@@ -19,7 +19,7 @@
   <script type="text/javascript">
     var ready;
     ready = function() {
-      $('#hacker_language_ids').chosen();
+      $('#mentorship_language_id').chosen();
     };
 
     $(document).ready(ready);
