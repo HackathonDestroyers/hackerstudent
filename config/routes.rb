@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'pages#home'
   resources :mentorships
   devise_for :students
   devise_for :hackers
