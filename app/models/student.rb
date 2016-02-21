@@ -5,4 +5,13 @@ class Student < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  before_create :generate_gravatar_url
+
+  private
+
+  def generate_gravatar_url
+    hash = Digest::MD5.hexdigest(email)
+    self.gravatar_url = "//www.gravatar.com/avatar/#{hash}?s=200"
+  end
 end
