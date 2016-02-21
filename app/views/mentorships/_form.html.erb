@@ -1,45 +1,76 @@
-<%= form_for(@mentorship) do |f| %>
-  <% if @mentorship.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@mentorship.errors.count, "error") %> prohibited this mentorship from being saved:</h2>
+<%= form_for @mentorship, :html => { :class => "form-horizontal mentorship" } do |f| %>
 
-      <ul>
-      <% @mentorship.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <% if @mentorship.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@mentorship.errors.count, "error") %> prohibited this mentorship from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @mentorship.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :hacker_id %><br>
-    <%= f.text_field :hacker_id %>
+  <div class="form-group">
+    <%= f.label :hacker_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :hacker_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:hacker_id) %>
   </div>
-  <div class="field">
-    <%= f.label :student_id %><br>
-    <%= f.text_field :student_id %>
+  <div class="form-group">
+    <%= f.label :student_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :student_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:student_id) %>
   </div>
-  <div class="field">
-    <%= f.label :started_at %><br>
-    <%= f.datetime_select :started_at %>
+  <div class="form-group">
+    <%= f.label :started_at, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :started_at, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:started_at) %>
   </div>
-  <div class="field">
-    <%= f.label :ended_at %><br>
-    <%= f.datetime_select :ended_at %>
+  <div class="form-group">
+    <%= f.label :ended_at, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :ended_at, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:ended_at) %>
   </div>
-  <div class="field">
-    <%= f.label :hacker_rating %><br>
-    <%= f.number_field :hacker_rating %>
+  <div class="form-group">
+    <%= f.label :hacker_rating, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :hacker_rating, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:hacker_rating) %>
   </div>
-  <div class="field">
-    <%= f.label :student_rating %><br>
-    <%= f.number_field :student_rating %>
+  <div class="form-group">
+    <%= f.label :student_rating, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :student_rating, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:student_rating) %>
   </div>
-  <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
+  <div class="form-group">
+    <%= f.label :comment, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :comment, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:comment) %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                mentorships_path, :class => 'btn btn-default' %>
+    </div>
   </div>
+
 <% end %>

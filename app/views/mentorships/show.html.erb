@@ -1,39 +1,31 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Mentorship -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+</div>
 
-<p>
-  <strong>Hacker:</strong>
-  <%= @mentorship.hacker %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:hacker_id) %>:</strong></dt>
+  <dd><%= @mentorship.hacker_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:student_id) %>:</strong></dt>
+  <dd><%= @mentorship.student_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:started_at) %>:</strong></dt>
+  <dd><%= @mentorship.started_at %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:ended_at) %>:</strong></dt>
+  <dd><%= @mentorship.ended_at %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:hacker_rating) %>:</strong></dt>
+  <dd><%= @mentorship.hacker_rating %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:student_rating) %>:</strong></dt>
+  <dd><%= @mentorship.student_rating %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:comment) %>:</strong></dt>
+  <dd><%= @mentorship.comment %></dd>
+</dl>
 
-<p>
-  <strong>Student:</strong>
-  <%= @mentorship.student %>
-</p>
-
-<p>
-  <strong>Started at:</strong>
-  <%= @mentorship.started_at %>
-</p>
-
-<p>
-  <strong>Ended at:</strong>
-  <%= @mentorship.ended_at %>
-</p>
-
-<p>
-  <strong>Hacker rating:</strong>
-  <%= @mentorship.hacker_rating %>
-</p>
-
-<p>
-  <strong>Student rating:</strong>
-  <%= @mentorship.student_rating %>
-</p>
-
-<p>
-  <strong>Comment:</strong>
-  <%= @mentorship.comment %>
-</p>
-
-<%= link_to 'Edit', edit_mentorship_path(@mentorship) %> |
-<%= link_to 'Back', mentorships_path %>
+<%= link_to t('.back', :default => t("helpers.links.back")),
+              mentorships_path, :class => 'btn btn-default'  %>
+<%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_mentorship_path(@mentorship), :class => 'btn btn-default' %>
+<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              mentorship_path(@mentorship),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
