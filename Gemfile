@@ -5,6 +5,10 @@ gem 'thin'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-chosen'
+end
+
 gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
