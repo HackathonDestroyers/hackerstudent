@@ -1,25 +1,34 @@
 <div id="request-help-container">
-  <div class="container">
+  <div class="container wrapped">
     <div class="profile">
-    <h2>Welcome back, <%= current_student.first_name.titleize %></h2>
-
-    <%= form_for(@mentorship) do |f| %>
-      <%= f.hidden_field :student_id %>
-      <div class="field">
-        <%= f.label :language_id, 'Programming language you need help with today' %><br />
-        <%= f.select :language_id, Language.all.collect {|l| [l.name, l.id]}, {}, data: { placeholder: 'Choose language...' } %>
+      <div class="row">
+        <div class="col-md-3 col-md-offset-2">
+          <%= image_tag current_user.gravatar_url, class: "img-circle" %>
+          <h2><%= current_user.first_name.titleize %></h2>
+          <h4><%= current_user.email %></h4>
+          <h4>Joined on <%= current_user.created_at.strftime("%b %d, %Y") %></h4>
+        </div>
+        <div class="col-md-4">
+          <%= form_for(@mentorship) do |f| %>
+            <%= f.hidden_field :student_id %>
+            <div class="field">
+              <%#= f.label :language_id, 'Which programming language you need help with' %><br />
+              <h3>Which programming language do you need help with?</h3>
+              <%= f.select :language_id, Language.all.collect {|l| [l.name, l.id]}, {}, data: { placeholder: 'Choose language...' } %>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Look for mentor</button>
+          <% end %>
+        </div>
       </div>
-      <br>
-      <div class="actions">
-        <%= f.submit "Search for mentor" %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
   <script type="text/javascript">
     var ready;
     ready = function() {
-      $('#mentorship_language_id').chosen();
+      $('#mentorship_language_id').chosen({width: "100%"},{'font-size':'20px'});
+      // $('#mentorship_language_id').css({'font-size','18px'});
     };
 
     $(document).ready(ready);
