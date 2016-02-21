@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   resources :mentorships
   devise_for :students
   devise_for :hackers
-
+  get 'take/:id' => 'mentorships#take', as: :hacker_take
+  get 'chat/:id' => 'mentorships#chat', as: :chat
   get 'hacker/profile' => 'hackers#show', as: :hacker
   get 'student/profile' => 'students#show', as: :student
   # The priority is based upon order of creation: first created -> highest priority.

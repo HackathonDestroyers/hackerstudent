@@ -15,4 +15,5 @@
 //= require jquery_ujs
 //= require chosen
 //= require turbolinks
+//= require remarkable-bootstrap-notify/bootstrap-notify.js
 //= require_tree .

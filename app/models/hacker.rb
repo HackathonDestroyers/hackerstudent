@@ -10,6 +10,10 @@ class Hacker < ActiveRecord::Base
 
   before_create :generate_gravatar_url
 
+  def busy?
+    false
+  end
+
   private
 
   def generate_gravatar_url
