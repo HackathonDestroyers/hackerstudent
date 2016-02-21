@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hacker:</strong>
+  <%= @mentorship.hacker %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @mentorship.student %>
+</p>
+
+<p>
+  <strong>Started at:</strong>
+  <%= @mentorship.started_at %>
+</p>
+
+<p>
+  <strong>Ended at:</strong>
+  <%= @mentorship.ended_at %>
+</p>
+
+<p>
+  <strong>Hacker rating:</strong>
+  <%= @mentorship.hacker_rating %>
+</p>
+
+<p>
+  <strong>Student rating:</strong>
+  <%= @mentorship.student_rating %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @mentorship.comment %>
+</p>
+
+<%= link_to 'Edit', edit_mentorship_path(@mentorship) %> |
+<%= link_to 'Back', mentorships_path %>

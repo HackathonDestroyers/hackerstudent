@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mentorships
   devise_for :students
   devise_for :hackers
   # The priority is based upon order of creation: first created -> highest priority.

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221023707) do
+ActiveRecord::Schema.define(version: 20160221024722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,21 @@ ActiveRecord::Schema.define(version: 20160221023707) do
   add_index "hackers", ["email"], name: "index_hackers_on_email", unique: true, using: :btree
   add_index "hackers", ["reset_password_token"], name: "index_hackers_on_reset_password_token", unique: true, using: :btree
 
+  create_table "mentorships", force: :cascade do |t|
+    t.integer  "hacker_id"
+    t.integer  "student_id"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.integer  "hacker_rating"
+    t.integer  "student_rating"
+    t.text     "comment"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "mentorships", ["hacker_id"], name: "index_mentorships_on_hacker_id", using: :btree
+  add_index "mentorships", ["student_id"], name: "index_mentorships_on_student_id", using: :btree
+
   create_table "students", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -52,4 +67,6 @@ ActiveRecord::Schema.define(version: 20160221023707) do
   add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree
   add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "mentorships", "hackers"
+  add_foreign_key "mentorships", "students"
 end
