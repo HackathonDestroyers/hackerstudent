@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221044917) do
+ActiveRecord::Schema.define(version: 20160221050611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,9 +60,11 @@ ActiveRecord::Schema.define(version: 20160221044917) do
     t.text     "comment"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "language_id"
   end
 
   add_index "mentorships", ["hacker_id"], name: "index_mentorships_on_hacker_id", using: :btree
+  add_index "mentorships", ["language_id"], name: "index_mentorships_on_language_id", using: :btree
   add_index "mentorships", ["student_id"], name: "index_mentorships_on_student_id", using: :btree
 
   create_table "students", force: :cascade do |t|
@@ -86,5 +88,6 @@ ActiveRecord::Schema.define(version: 20160221044917) do
   add_foreign_key "hacker_languages", "hackers"
   add_foreign_key "hacker_languages", "languages"
   add_foreign_key "mentorships", "hackers"
+  add_foreign_key "mentorships", "languages"
   add_foreign_key "mentorships", "students"
 end
