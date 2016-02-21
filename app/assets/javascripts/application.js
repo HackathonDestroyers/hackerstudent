@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require chosen
-//= require turbolinks
+//= require card/card.js
+//= require card/jquery.card.js
 //= require remarkable-bootstrap-notify/bootstrap-notify.js
 //= require_tree .

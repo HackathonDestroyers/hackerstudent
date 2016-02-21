@@ -10,7 +10,7 @@
     <%= stylesheet_link_tag :application, media: "all" %>
 
     <%= javascript_include_tag "application" %>
-
+    <script src="https://cdn.rawgit.com/nnattawat/flip/v1.0.19/dist/jquery.flip.min.js"></script>
     <% if current_hacker && !current_hacker.busy? %>
       <script src="https://js.pusher.com/3.0/pusher.min.js"></script>
       <script type="text/javascript">

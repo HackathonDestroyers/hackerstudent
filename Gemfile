@@ -8,6 +8,7 @@ gem 'pusher'
 source 'https://rails-assets.org' do
   gem 'rails-assets-chosen'
   gem 'rails-assets-remarkable-bootstrap-notify'
+  gem 'rails-assets-card'
 end
 
 group :production do
