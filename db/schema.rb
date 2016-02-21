@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221024722) do
+ActiveRecord::Schema.define(version: 20160221044917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "hacker_languages", force: :cascade do |t|
+    t.integer  "hacker_id"
+    t.integer  "language_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "hacker_languages", ["hacker_id"], name: "index_hacker_languages_on_hacker_id", using: :btree
+  add_index "hacker_languages", ["language_id"], name: "index_hacker_languages_on_language_id", using: :btree
 
   create_table "hackers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -33,6 +43,12 @@ ActiveRecord::Schema.define(version: 20160221024722) do
 
   add_index "hackers", ["email"], name: "index_hackers_on_email", unique: true, using: :btree
   add_index "hackers", ["reset_password_token"], name: "index_hackers_on_reset_password_token", unique: true, using: :btree
+
+  create_table "languages", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "mentorships", force: :cascade do |t|
     t.integer  "hacker_id"
@@ -67,6 +83,8 @@ ActiveRecord::Schema.define(version: 20160221024722) do
   add_index "students", ["email"], name: "index_students_on_email", unique: true, using: :btree
   add_index "students", ["reset_password_token"], name: "index_students_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "hacker_languages", "hackers"
+  add_foreign_key "hacker_languages", "languages"
   add_foreign_key "mentorships", "hackers"
   add_foreign_key "mentorships", "students"
 end
