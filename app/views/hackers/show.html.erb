@@ -1,5 +1,25 @@
 <div class="container">
   <h2>Hello, <%= current_hacker.first_name %> <%= current_hacker.last_name %></h2>
   <h3>Your skills are: </h3>
-
+<%= form_for(current_hacker, url: hacker_update_path) do |f| %>
+  <div class="form-group">
+            <%= f.label :language_ids, 'Programming languages you master' %><br />
+            <%= f.select :language_ids, Language.all.collect {|l| [l.name, l.id]}, {}, multiple: true, data: { placeholder: 'Choose languages...' }, class: "sign_field" %>
+          </div>
+      <div class="card-action">
+          <button type="submit" class="btn btn-primary btn-block btn-lg" >Update information</button>
+        </div>
+   <% end %>
 </div>
+
+
+<script type="text/javascript">
+  var ready;
+  ready = function() {
+    $('#hacker_language_ids').chosen();
+  };
+
+  $(document).ready(ready);
+  $(document).on('page:load', ready);
+</script>
+
