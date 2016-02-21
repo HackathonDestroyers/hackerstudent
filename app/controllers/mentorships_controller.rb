@@ -33,7 +33,7 @@ class MentorshipsController < ApplicationController
     if @mentorship.save
       Pusher.trigger(@mentorship.language.name, 'student_request',
                      mentorship_id: @mentorship.id,
-                     message: "#{@mentorship.student.first_name.titleize} need help with #{@mentorship.language.name}.")
+                     message: "#{@mentorship.student.first_name.titleize} needs help with #{@mentorship.language.name}.")
       redirect_to chat_path(@mentorship.id)
     else
       render :new
