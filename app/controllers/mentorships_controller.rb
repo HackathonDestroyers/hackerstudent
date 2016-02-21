@@ -1,6 +1,8 @@
 class MentorshipsController < ApplicationController
   before_action :set_mentorship, only: [:show, :edit, :update, :destroy, :chat, :take]
   before_action :restrict_chat, only: :chat
+
+  layout 'mentorship'
   # GET /mentorships
   def index
     @mentorships = Mentorship.all

@@ -1,1 +1,35 @@
-<%= render 'videochat' %>
+<section class="mentorship">
+  <div class="llamada">
+    <%= render 'videochat' %>
+  </div>
+  <div class="acey">
+    <div id="firepad-container"></div>
+  </div>
+</section>
+<script>
+function init() {
+  //// Initialize Firebase.
+  var firepadRef = getExampleRef();
+  // TODO: Replace above line with:
+  // var firepadRef = new Firebase('<YOUR FIREBASE URL>');
+  //// Create CodeMirror (with line numbers and the JavaScript mode).
+  var codeMirror = CodeMirror(document.getElementById('firepad-container'), {
+    lineNumbers: true,
+    mode: '<%= @mentorship.language.name.downcase %>'
+  });
+  //// Create Firepad.
+  var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+    defaultText: ''
+  });
+}
+// Helper to get hash from end of URL or generate a random one.
+function getExampleRef() {
+  var ref = new Firebase('https://hackerstudent.firebaseio.com');
+  ref = ref.child('<%= @mentorship.connection_code %>');
+  window.location = window.location + '#' + '<%= @mentorship.connection_code %>'; // add it as a hash to the URL.
+  if (typeof console !== 'undefined')
+  console.log('Firebase data: ', ref.toString());
+  return ref;
+}
+init();
+</script>
