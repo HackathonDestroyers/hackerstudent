@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160221050934) do
+ActiveRecord::Schema.define(version: 20160221073955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,9 +60,10 @@ ActiveRecord::Schema.define(version: 20160221050934) do
     t.integer  "hacker_rating"
     t.integer  "student_rating"
     t.text     "comment"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "language_id"
+    t.string   "connection_code"
   end
 
   add_index "mentorships", ["hacker_id"], name: "index_mentorships_on_hacker_id", using: :btree
