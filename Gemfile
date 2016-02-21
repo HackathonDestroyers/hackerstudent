@@ -6,6 +6,7 @@ gem 'devise'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-chosen'
+  gem 'rails-assets-ace'
 end
 
 gem 'rails_12factor', group: :production
