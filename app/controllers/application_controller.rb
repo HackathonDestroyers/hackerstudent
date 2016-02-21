@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= current_hacker || current_student
   end
 
+  def after_sign_in_path_for(resource)
+    eval "#{resource.class.name.downcase}_path"
+  end
+
   protected
 
   def configure_permitted_parameters
