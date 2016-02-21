@@ -1,0 +1,24 @@
+<div id="request-help-container">
+  hola <%= current_student.email %>
+
+  <%= form_for(@mentorship, remote: true) do |f| %>
+    <div class="field">
+      <%= f.label :language_id, 'Programming language you need help with' %><br />
+      <%= f.select :language_id, Language.all.collect {|l| [l.name, l.id]}, {}, data: { placeholder: 'Choose language...' } %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Search for mentor" %>
+    </div>
+  <% end %>
+
+  <script type="text/javascript">
+    var ready;
+    ready = function() {
+      $('#hacker_language_ids').chosen();
+    };
+
+    $(document).ready(ready);
+    $(document).on('page:load', ready);
+  </script>
+</div>

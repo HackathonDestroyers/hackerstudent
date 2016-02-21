@@ -22,11 +22,12 @@ class MentorshipsController < ApplicationController
   # POST /mentorships
   def create
     @mentorship = Mentorship.new(mentorship_params)
-
-    if @mentorship.save
-      redirect_to @mentorship, notice: 'Mentorship was successfully created.'
-    else
-      render :new
+    respond_to do |format|
+      if @mentorship.save
+        format.js
+      else
+        render :new
+      end
     end
   end
 
