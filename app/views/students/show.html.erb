@@ -3,9 +3,10 @@
 
   <%= form_for(@mentorship) do |f| %>
     <%= f.hidden_field :student_id %>
-    <div class="field">
-      <%= f.label :language_id, 'Programming language you need help with' %><br />
-      <%= f.select :language_id, Language.all.collect {|l| [l.name, l.id]}, {}, data: { placeholder: 'Choose language...' } %>
+
+    <div class="form-group">
+            <%= f.label :language_id, 'Programming language you need help with' %><br />
+            <%= f.select :language_id, Language.all.collect {|l| [l.name, l.id]}, {}, data: { placeholder: 'Choose language...' }, class: "sign_field" %>
     </div>
 
     <div class="actions">
@@ -16,7 +17,7 @@
   <script type="text/javascript">
     var ready;
     ready = function() {
-      $('#hacker_language_ids').chosen();
+      $('#mentorship_language_id').chosen();
     };
 
     $(document).ready(ready);
