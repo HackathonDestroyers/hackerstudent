@@ -1,18 +1,21 @@
 <div id="request-help-container">
-  hola <%= current_student.email %>
-
-  <%= form_for(@mentorship) do |f| %>
-    <%= f.hidden_field :student_id %>
-    <div class="field">
-      <%= f.label :language_id, 'Programming language you need help with' %><br />
-      <%= f.select :language_id, Language.all.collect {|l| [l.name, l.id]}, {}, data: { placeholder: 'Choose language...' } %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Search for mentor" %>
-    </div>
-  <% end %>
-
+  <div class="container">
+    <div class="profile">
+    <h2>Welcome back, <%= current_student.first_name.titleize %></h2>
+  
+    <%= form_for(@mentorship) do |f| %>
+      <%= f.hidden_field :student_id %>
+      <div class="field">
+        <%= f.label :language_id, 'Programming language you need help with today' %><br />
+        <%= f.select :language_id, Language.all.collect {|l| [l.name, l.id]}, {}, data: { placeholder: 'Choose language...' } %>
+      </div>
+      <br>
+      <div class="actions">
+        <%= f.submit "Search for mentor" %>
+      </div>
+    <% end %>
+  </div>
+</div>
   <script type="text/javascript">
     var ready;
     ready = function() {
