@@ -26,13 +26,12 @@
             $.notify({
               // options
               message: data.message,
-              url: "/take/" + data.mentorship_id
+              url: "/take/" + data.mentorship_id,
+              autoHide: false
             },{
               // settings
               type: 'info'
             });
-            console.log(data.message);
-            console.log(data.mentorship_id);
           });
         });
       </script>
