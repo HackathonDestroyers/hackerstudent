@@ -18,6 +18,6 @@ class Hacker < ActiveRecord::Base
 
   def generate_gravatar_url
     hash = Digest::MD5.hexdigest(email)
-    self.gravatar_url = "http://www.gravatar.com/avatar/#{hash}"
+    self.gravatar_url = "//www.gravatar.com/avatar/#{hash}?s=200"
   end
 end

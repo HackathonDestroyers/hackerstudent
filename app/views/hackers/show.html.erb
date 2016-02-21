@@ -1,24 +1,35 @@
-<div class="container">
-  <h2>Hello, <%= current_hacker.first_name %> <%= current_hacker.last_name %></h2>
-  <h3>Your skills are: </h3>
-<%= form_for(current_hacker, url: hacker_update_path) do |f| %>
-  <div class="form-group">
+  <div class="container wrapped">
+    <div class="profile">
+      <div class="row">
+        <div class="col-md-3 col-md-offset-2">
+          <%= image_tag current_user.gravatar_url, class: "img-circle" %>
+          <h2><%= current_user.first_name.titleize %></h2>
+          <h4><%= current_user.email %></h4>
+          <h4>Joined on <%= current_user.created_at.strftime("%b %d, %Y") %></h4>
+        </div>
+        <div class="col-md-4">
+          <%= form_for(current_hacker, url: hacker_update_path) do |f| %>
+          <div class="form-group">
+            <h3>Languages you're expert at:</h3>
             <%= f.select :language_ids, Language.all.collect {|l| [l.name, l.id]}, {}, multiple: true, data: { placeholder: 'Choose languages...' }, class: "sign_field" %>
           </div>
-      <div class="card-action">
-          <button type="submit" class="btn btn-primary btn-lg" >Update information</button>
+          <div class="card-action">
+            <button type="submit" class="btn btn-primary btn-lg" >Update information</button>
+          </div>
+          <% end %>
         </div>
-   <% end %>
-</div>
+      </div>
+    </div>
+  </div>
 
 
-<script type="text/javascript">
-  var ready;
-  ready = function() {
-    $('#hacker_language_ids').chosen();
-  };
+  <script type="text/javascript">
+    var ready;
+    ready = function() {
+      $('#hacker_language_ids').chosen();
+    };
 
-  $(document).ready(ready);
-  $(document).on('page:load', ready);
-</script>
+    $(document).ready(ready);
+    $(document).on('page:load', ready);
+  </script>
 
