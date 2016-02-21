@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'pages#home'
+  patch 'hacker' => 'hackers#update', as: :hacker_update
   resources :mentorships
   devise_for :students
   devise_for :hackers

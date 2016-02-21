@@ -10,7 +10,10 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-remarkable-bootstrap-notify'
 end
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+  gem 'puma'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
